@@ -1,0 +1,21 @@
+<!-- edit -->
+<h1>Welcome to UGA's Salary Database</h1>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Title</th>
+		<th>Salary</th>
+		<th>Travel Fees</th>
+		<th>Organization</th>
+	</tr>
+	<tr>
+		<% @result.each do |row| %>
+			<td><%= row.name %></td>
+			<td><%= row.title %></td>
+			<td><%= row.salary %></td>
+			<td><%= row.travel_fees %></td>
+			<td><%= row.organization %></td>
+		<% end %>
+	</tr>
+</table>
