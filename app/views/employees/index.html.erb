@@ -6,15 +6,14 @@
 </div>
 
 
-<div class="container">
+<div class="container dark-forms">
 	<%= bootstrap_form_tag url: '/index' do |f| %>	
 		<%= f.check_box :exact_name, label: 'Match name exactly' %>
 		<%= f.check_box :exact_title, label: 'Match title exactly' %>
 		<%= f.text_field :first_name, hide_label: true, placeholder: 'First Name (All search fields are optional and case insensitive)' %>
 		<%= f.text_field :last_name, hide_label: true, placeholder: 'Last Name' %>
 		<%= f.text_field :title, hide_label: true, placeholder: 'Job Title' %>
-		<%= f.text_field :min_salary, hide_label: true, placeholder: 'Minimum Salary' %>
-		<%= f.text_field :max_salary, hide_label: true, placeholder: 'Maximum Salary' %>
+		
 		<%= f.select :organization, options_from_collection_for_select(@organizations, :name, :name), hide_label: true %>
 		<%= f.select :year, options_from_collection_for_select(@years, :year, :year), hide_label: true %>
 		<%= f.submit 'Search' %> 
