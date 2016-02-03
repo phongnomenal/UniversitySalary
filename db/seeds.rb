@@ -8,7 +8,15 @@
 
 
 # Universities
-University.create([
-									{ name: 'University of Georgia' },
-									{ name: 'Georgia Institute of Technology' }
-									])
+Organization.create([
+	{ name: 'University of Georgia' },
+	{ name: 'Georgia Institute of Technology' },
+	{ name: 'Emory' }
+	])
+
+
+# Fiscal year
+Year.create([
+	{ year: 2015, },
+	{ year: 2014, }
+	])

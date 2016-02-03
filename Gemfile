@@ -7,6 +7,8 @@ gem 'rails', '4.2.5'
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# Bootstrap form wrappers
+gem 'bootstrap_form', '~> 2.3.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -51,8 +53,8 @@ end
 # For deployment with Heroku
 group :production do 
 	# postgresql
-	gem 'pg'
+	gem 'pg', '0.17.1'
 	# used by Heroku to serve static assets such as images and stylesheets
-	gem 'rails_12factor'
+	gem 'rails_12factor', '0.0.2'
 end
 

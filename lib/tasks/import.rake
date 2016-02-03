@@ -3,13 +3,15 @@ require 'csv'
 namespace :import do
 	desc "Import employees from csv"
 
+	# Use the below command to import the salary data:
+	# bundle exec rake import:employees
 	task employees: :environment do
 		dir = Dir.pwd + '/lib/assets/salary_data/'
 
 		Dir.foreach(dir) do |file_name|
 			next if file_name == '.' || file_name == '..'
 			
-			counter = 0
+			# counter = 0
 			path = dir + file_name
 			puts path
 
@@ -22,9 +24,8 @@ namespace :import do
 												travel_fees: travel_fees,
 												organization: organization,
 												year: year
-
-				counter += 1
-				break if counter == 5
+				# counter += 1
+				# break if counter == 5
 			end
 		end
 	end
