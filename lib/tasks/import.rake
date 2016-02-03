@@ -14,16 +14,19 @@ namespace :import do
 			# counter = 0
 			path = dir + file_name
 			puts path
-
-			CSV.foreach(path) do |row|
+			
+			# skip the first row
+			csv = CSV.read path
+			csv.shift
+			csv.each do |row|
 				# p row
 				name, title, salary, travel_fees, organization, year = row
 				Employee.create name: name,
 												title: title,
-												salary: salary,
-												travel_fees: travel_fees,
+												salary: salary.to_i,
+												travel_fees: travel_fees.to_i,
 												organization: organization,
-												year: year
+												year: year.to_i
 				# counter += 1
 				# break if counter == 5
 			end

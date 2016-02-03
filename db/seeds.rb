@@ -11,7 +11,7 @@
 Organization.create([
 	{ name: 'University of Georgia' },
 	{ name: 'Georgia Institute of Technology' },
-	{ name: 'Emory' }
+	{ name: 'Gergia State University' }
 	])
 
 
