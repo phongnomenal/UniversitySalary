@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # root 'employees#edit'
   # root 'pages#home'
 
-  root 'employees#index'
+  root 'employees#about'
   # get '/index' => 'employees#index'
   post '/index' => 'employees#edit'
 
