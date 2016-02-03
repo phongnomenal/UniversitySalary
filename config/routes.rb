@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   # root 'employees#edit'
   # root 'pages#home'
 
-  root 'pages#about'
-  # get '/index' => 'employees#index'
+  root 'employees#index'
+  get '/index' => 'employees#index' # this is replaced by the root
   post '/index' => 'employees#edit'
 
   get '/about' => 'pages#about'
