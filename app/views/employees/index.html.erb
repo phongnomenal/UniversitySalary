@@ -16,11 +16,13 @@
 		<% end %>
 
 
-		<%= f.text_field :name, hide_label: true, placeholder: 'Name' %>
+		<%= f.text_field :name, hide_label: true, required: true, placeholder: 'Name *' %>
 		<%= f.text_field :title, hide_label: true, placeholder: 'Job Title' %>
 		<%= f.select :organization, options_from_collection_for_select(@organizations, :name, :name, selected: "University of Georgia"), hide_label: true  %>
 		<%= f.select :year, options_from_collection_for_select(@years, :year, :year), hide_label: true %>
-
+		<div class="p-required">
+			<p>* Required</p>
+		</div>
 		<div class="text-center">
 			<button class="btn btn-primary">Search</button>
 		</div>
