@@ -1,50 +1,35 @@
-
+<body class="employee-body">
 <div class="text-center">
 	<h1>Results</h1>
 	<br>
 </div
 
 <div class="container">
-<table class="table table-striped table-bordered table-condensed table-hover ">
+<table class="table table-striped table-condensed table-hover table-responsive">
 	<thead>
 		<tr>
+			<th>#</th>
 			<th>Name</th>
 			<th>Title</th>
-			<th>Salary $</th>
-			<th>Travel Fees $</th>
+			<th>Salary ($)</th>
 			<th>Organization</th>
 			<th>Year</th>
 		</tr>
 	</thead>
 	<tbody>
-		<% @result.each do |row| %>
-		<tr>
-			<td>
-				<%=
-					# split either by white space or comma
-					# then capitalize the first letter of every word
-					row_name = row.name.split(/[\s,]/).map(&:capitalize)
-					# join depending on if they have a middle name or not
-					if row_name.size > 2
-						row_name = "#{row_name[0, 2].join(',')} #{row_name[2, row_name.size].join(' ')}"
-					elsif row_name.size == 2
-						row_name = "#{row_name.join(',')}"
-					else
-						row_name
-					end
-				%>
-			</td>
-			<td><%= row.title.split(/[\s,]/).map(&:capitalize).join(' ') %></td>
-			<td class='text-right'>
-				<%= 
-					# round to 2 decimal places
-					sprintf '%.2f', row.salary
-				%>
-			</td>
-			<td class='text-right'><%= sprintf '%.2f', row.travel_fees %></td>
-			<td><%= row.organization.split(/[\s,]/).map(&:capitalize).join(' ') %></td>
-			<td><%= row.year %></td>
-		</tr>
+		<% if @result != nil %>
+			<% i = 0 %>
+			<% @result.each do |row| %>
+			<tr>
+				<td><%= i += 1 %></td>
+				<td><%=	row_name = row.name.split(',').join(', ')	%></td>
+				<td><%= row.title %></td>
+				<!-- display the salary with 2 decimal precision -->
+				<td class="text-right"><%= sprintf '%.2f', row.salary %></td>
+				<td><%= row.organization %></td>
+				<td><%= row.year %></td>
+			</tr>
+			<% end %>
 		<% end %>
 	</tbody>
 </table>
@@ -54,4 +39,5 @@
 	<button class="btn btn-default">
 		<%= link_to 'Search again', '/index' %>
 	</button>
-</div
+</div>
+</body>

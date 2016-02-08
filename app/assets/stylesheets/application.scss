@@ -20,6 +20,29 @@
 @import "bootstrap";
 
 body { 
-	padding-top: 80px; 
-	background-color: AliceBlue
+	padding-top: 80px; // avoid top nav bar covering content
+	padding-bottom: 70px; // avoid bottom nav bar covering content
 }
+
+
+/* footer */
+
+footer {
+	color: white; // text color
+}
+
+footer small {
+	color: white; // text color
+  margin-top: 10px;
+  margin-right: 20px;
+  float: right;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+

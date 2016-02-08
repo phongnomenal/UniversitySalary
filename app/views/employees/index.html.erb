@@ -1,5 +1,6 @@
 
 
+<body class="employee-body">
 <div class="text-center">  
 	<h1>University Salary Database</h1>
 	<br>
@@ -7,17 +8,23 @@
 
 
 <div class="container dark-forms">
-	<%= bootstrap_form_tag url: '/index' do |f| %>	
+	<%= bootstrap_form_tag url: '/index' do |f| %>
+		<!-- commented -->
+		<% if false %>
 		<%= f.check_box :exact_name, label: 'Match name exactly' %>
 		<%= f.check_box :exact_title, label: 'Match title exactly' %>
-		<%= f.text_field :first_name, hide_label: true, placeholder: 'First Name (All search fields are optional and case insensitive)' %>
-		<%= f.text_field :last_name, hide_label: true, placeholder: 'Last Name' %>
+		<% end %>
+
+
+		<%= f.text_field :name, hide_label: true, placeholder: 'Name' %>
 		<%= f.text_field :title, hide_label: true, placeholder: 'Job Title' %>
-		
 		<%= f.select :organization, options_from_collection_for_select(@organizations, :name, :name), hide_label: true %>
 		<%= f.select :year, options_from_collection_for_select(@years, :year, :year), hide_label: true %>
-		<%= f.submit 'Search' %> 
+
+		<div class="text-center">
+			<button class="btn btn-primary">Search</button>
+		</div>
 	<% end %>	
 <div>
-
+</body>
 

@@ -3,7 +3,9 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-# Added 2015/01/31
+# Added 2016/02/07: combine pagination with bootstrap table
+gem 'will_paginate-bootstrap'
+# Added 2016/01/31
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.employee-body {
+	background-color: #ffffff;
+}
+
+.employee-body h1 {
+		color: #519add; // text color
+}
+
 .table th, td {
-   text-align: center;   
+  text-align: center;   
+}
+
+.about {
+	color: blue;
 }

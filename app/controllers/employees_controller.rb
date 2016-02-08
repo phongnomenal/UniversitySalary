@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
 	def index
-		@organizations = Organization.all.order(:name)
+		@organizations = Organization.all.order('name desc')
 		@years = Year.all.order('year desc')
 	end
 
@@ -10,47 +10,37 @@ class EmployeesController < ApplicationController
 
 
 	def edit
-		# format the name according to whether which name was provided
-		name = ""
-		if params[:first_name].blank?
-			name = params[:last_name].upcase
-		elsif params[:last_name].blank?
-			name = params[:first_name].upcase
-		else
-			name = "#{params[:last_name]},#{params[:first_name]}".upcase
-		end
-		exact_name = params[:exact_name]
-
+		name = params[:name].upcase
 		title = params[:title].upcase
-		exact_title = params[:exact_title]
+		# either title or name must not be blank
+		# name and title may only contain alphabet and dashes
+		# \ escapes \ which escapes -
+		if (!name.blank? || !title.blank?) && name == name[/[\sA-Za-z\\-]*/]
+			name = name.upcase.split(/[\s,]/)
+			if name.size < 6
+				@result = Employee.where(year: params[:year]).
+													 where(organization: params[:organization].upcase).
+													 where("title LIKE ?", "%#{title}%")
 
-		organization = params[:organization].upcase
-		year = params[:year]
+				# name must contain all words in the search string
+				for i in (0 ... name.size)
+					@result = @result.where("name LIKE ?", "%#{name[i]}%")
+				end
 
-		# build the query logic for name and title
-		# name must not be blank and the exact checkbox must be checked
-		name_query = ''
-		if !name.blank? && exact_name != '0'
-			name_query = "name = ?"
+				# paginated results
+				# @result = Employee.paginate(:page => params[:page], :per_page => 30).
+				# 									 where(name_query, name).
+				# 									 where(title_query, title).
+				# 									 where(organization: organization).
+				# 									 where(year: year)
+			else
+				puts "NAME IS SO LARGE: #{row.name}"
+			end
 		else
-			name_query = "name LIKE ?"
-			name = "%#{name}%"
+			puts "NAME OR TITLE IS INVALID"
+			puts "TITLE = #{title[/[\sA-Za-z\\-]/]}"
+			puts "#{title == title[/[\sA-Za-z\\-]/]}"
 		end
-
-		title_query = ''
-		if !title.blank? && exact_title != '0'
-			title_query = "title = ?"
-		else
-			title_query = "title LIKE ?"
-			title = "%#{title}%"
-		end
-
-		# get the result
-		@result = Employee.all.where(name_query, name).
-													 where(title_query, title).
-													 where(organization: organization).
-													 where(year: year)
-													 # debug
 	end
 
 
