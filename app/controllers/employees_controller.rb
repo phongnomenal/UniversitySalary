@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
 	def index
-		@organizations = Organization.all.order('name desc')
+		@organizations = Organization.all.order('name asc')
 		@years = Year.all.order('year desc')
 	end
 
