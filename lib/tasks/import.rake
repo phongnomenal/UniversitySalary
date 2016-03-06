@@ -24,8 +24,6 @@ namespace :import do
 												travel_fees: travel_fees.to_i,
 												organization: organization,
 												year: year.to_i
-
-				Organization.create name: organization
 			end # csv
 		end # Dir
 	end # task employees
