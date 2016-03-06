@@ -8,15 +8,14 @@
 
 
 # Universities
-Organization.create([
-	{ name: 'University of Georgia' },
-	{ name: 'Georgia Institute of Technology' },
-	{ name: 'Gergia State University' }
-	])
-
-
-# Fiscal year
-Year.create([
-	{ year: 2015, },
-	{ year: 2014, }
-	])
+# Organization.create([
+# 	{ name: 'University of Georgia' },
+# 	{ name: 'Georgia Institute of Technology' },
+# 	{ name: 'Georgia State University' }
+# 	])
+#
+#
+# # Fiscal year
+# Year.create([
+# 	{ year: 2015, }
+# 	])
