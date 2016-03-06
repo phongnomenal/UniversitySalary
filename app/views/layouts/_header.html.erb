@@ -1,15 +1,20 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-  	<!-- :id, "logo" -->
-    <nav>
-      <ul class="nav navbar-nav navbar-left">
-      <li><%= link_to "University Salary", '/index' %></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Search",   '/index' %></li>
-        <li><%= link_to "About",   '/about' %></li>
-        <li><%= link_to "Contact", '/contact' %></li>
-      </ul>
-    </nav>
-  </div>
+<header>
+  <nav class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-header navbar-brand">
+        <%#= link_to image_tag('/images/university_logo_no_border.jpg'), '/index' %>
+        <div class="container header-link">
+          <!-- <a href="/">UNIVERSITY SALARY</a> -->
+          <%= link_to "University Salary", "/" %>
+        </div>
+    </div>
+  </nav>
 </header>
+
+<!--
+<ul class="nav navbar-nav navbar-right">
+  <li></li>
+  <li><%#= link_to "Search",   '/index' %></li>
+  <li><%#= link_to "About",   '/about' %></li>
+  <li><%#= link_to "Contact", '/contact' %></li>
+</ul>
+-->

@@ -2,22 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.employee-body {
-	background-color: #ffffff;
+div.page-header {
+	border-bottom: none;
 }
 
-.employee-body h1 {
-		color: #519add; // text color
+div.result-header {
+	padding-bottom: 20px;
 }
 
-.table th, td {
-  text-align: center;   
+div.index-header {
+	padding-bottom: 25px;
 }
 
-.about {
-	color: blue;
-}
-
-.p-required {
-	color: #e73b21;
+table th, td {
+  font-size: 14px;
 }

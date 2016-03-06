@@ -1,32 +1,28 @@
+<body>   
+	<div class="text-center page-header index-header">
+		<h2>Ever Wondered What Your Professors Make?</h2>
+	</div>
 
-
-<body class="employee-body">
-<div class="text-center">  
-	<h1>University Salary Database</h1>
-	<br>
-</div>
-
-
-<div class="container dark-forms">
-	<%= bootstrap_form_tag url: '/index' do |f| %>
+  <%= bootstrap_form_tag url: '/index' do |f| %>
+	<div class="jumbotron">
 		<!-- commented -->
 		<% if false %>
 		<%= f.check_box :exact_name, label: 'Match name exactly' %>
 		<%= f.check_box :exact_title, label: 'Match title exactly' %>
 		<% end %>
 
+		<%= f.text_field :name, hide_label: true, placeholder: 'Name (Required)', required: true %>
+		<%= f.text_field :title, hide_label: true, placeholder: 'Job Title (Optional)' %>
+		<!-- selected: "University of Georgia" -->
+		<%= f.select :organization, options_from_collection_for_select(@organizations, :name, :name), hide_label: true %>
+		<%= f.select :year, options_from_collection_for_select(@years, :year, :year), hide_label: true, disabled: true %>
+	</div>
 
-		<%= f.text_field :name, hide_label: true, required: true, placeholder: '* Name' %>
-		<%= f.text_field :title, hide_label: true, placeholder: 'Job Title' %>
-		<%= f.select :organization, options_from_collection_for_select(@organizations, :name, :name, selected: "University of Georgia"), hide_label: true  %>
-		<%= f.select :year, options_from_collection_for_select(@years, :year, :year), hide_label: true %>
-		<div class="p-required">
-			<p>* Required</p>
-		</div>
-		<div class="text-center">
-			<button class="btn btn-primary">Search</button>
-		</div>
-	<% end %>	
-<div>
+	<div class="text-center">
+          <!-- <button type="submit" class="btn btn-primary">Search Your Professor</button> -->
+          <!-- Same as above -->
+          <%= f.submit "Search Your Professor", class: "btn btn-primary" %>
+	</div>
+	<% end %>
 </body>
 

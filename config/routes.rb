@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # root 'pages#home'
 
   root 'employees#index'
-  get '/index' => 'employees#index' # this is replaced by the root
+  # get '/index' => 'employees#index' # this is replaced by the root
   post '/index' => 'employees#edit'
 
   get '/about' => 'pages#about'
