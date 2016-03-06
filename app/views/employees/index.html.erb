@@ -13,7 +13,7 @@
       <% end %>
 
       <%= f.text_field :name, hide_label: true, placeholder: 'Name (Required)', required: true %>
-      <%= f.text_field :title, hide_label: true, placeholder: 'Job Title (Optional)' %>
+      <%= f.text_field :title, hide_label: true, placeholder: 'Title (Optional)' %>
       <!-- selected: "University of Georgia" -->
       <%= f.select :organization, options_from_collection_for_select(@organizations, :name, :name), hide_label: true %>
       <%= f.select :year, options_from_collection_for_select(@years, :year, :year), hide_label: true, disabled: true %>
