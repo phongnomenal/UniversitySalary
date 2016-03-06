@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   # get '/index' => 'employees#index' # this is replaced by the root
   post '/index' => 'employees#edit'
 
-  get '/about' => 'pages#about'
-  get '/contact' => 'pages#contact'
+  # get '/about' => 'pages#about'
+  # get '/contact' => 'pages#contact'
 
   
 
