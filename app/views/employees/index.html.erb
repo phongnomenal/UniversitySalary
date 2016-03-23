@@ -16,7 +16,8 @@
       <%= f.text_field :title, hide_label: true, placeholder: 'Title (Optional)' %>
       <!-- selected: "University of Georgia" -->
       <%= f.select :organization, options_from_collection_for_select(@organizations, :name, :name), hide_label: true %>
-      <%= f.select :year, options_from_collection_for_select(@years, :year, :year), hide_label: true, disabled: true %>
+      <%#= f.select :year, options_from_collection_for_select(@years, :year, :year), hide_label: true, disabled: true %>
+      <%= f.select :sort, options_for_select(@sorts.collect { |s| [s, s] }), hide_label: true %>
     </div>
 
     <div class="text-center">

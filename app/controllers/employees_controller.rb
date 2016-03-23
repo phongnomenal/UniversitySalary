@@ -1,7 +1,10 @@
 class EmployeesController < ApplicationController
 	def index
 		@organizations = Organization.all.order('name asc')
-		@years = Year.all.order('year desc')
+		# @years = Year.all.order('year desc')
+		@sorts = ['Sort by Name Ascending', 'Sort by Name Descending', 
+							'Sort by Salary Ascending', 'Sort by Salary Descending',
+							'Sort by Title Ascending', 'Sort by Title Descending']
 	end
 
 
@@ -17,13 +20,14 @@ class EmployeesController < ApplicationController
 	def edit
 		name = params[:name].upcase # is "LIKE ?" case sensitive?
 		title = params[:title].upcase
+		sort = params[:sort].downcase
 		@result = ""
 
 		# match all words in name
 		names = name.split(" ")
 		0.upto(names.size - 1) do |i|
 			if i == 0
-				@result = Employee.where(year: params[:year]).
+				@result = Employee.where(year: 2015).
 													 where(organization: params[:organization].upcase).
 													 where("name LIKE ?", "%#{names[i]}%")
 			else
@@ -37,7 +41,21 @@ class EmployeesController < ApplicationController
 				@result = @result.where("title LIKE ?", "%#{word}%")
 			end
 		end
-
+		p sort
+		# sorting
+		if sort.include?('name asc')
+			@result = @result.order(:name)
+		elsif sort.include?('name desc')
+			@result = @result.order(name: :desc)
+		elsif sort.include?('salary asc')
+			@result = @result.order(:salary)
+		elsif sort.include?('salary desc')
+			@result = @result.order(salary: :desc)
+		elsif sort.include?('title asc')
+			@result = @result.order(:title)
+		else
+			@result = @result.order(title: :desc)
+		end
 
 		# OLD CODE
 		# either title or name must not be blank
