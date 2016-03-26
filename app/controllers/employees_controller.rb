@@ -2,9 +2,8 @@ class EmployeesController < ApplicationController
 	def index
 		@organizations = Organization.all.order('name asc')
 		# @years = Year.all.order('year desc')
-		@sorts = ['Sort by Name Ascending', 'Sort by Name Descending', 
-							'Sort by Salary Ascending', 'Sort by Salary Descending',
-							'Sort by Title Ascending', 'Sort by Title Descending']
+		@sorts = ['Name Ascending', 'Name Descending', 
+							'Salary Ascending', 'Salary Descending']
 	end
 
 
@@ -13,14 +12,13 @@ class EmployeesController < ApplicationController
 
 
 	def back
-
 	end
 
 
 	def edit
 		name = params[:name].upcase # is "LIKE ?" case sensitive?
 		title = params[:title].upcase
-		sort = params[:sort].downcase
+		sort = params[:sort_by].downcase
 		@result = ""
 
 		# match all words in name

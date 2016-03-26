@@ -4,20 +4,24 @@
   <h2>Ever wonder what your professors make?</h2>
 </div>
 
-<%= bootstrap_form_tag url: '/index' do |f| %>
+<%= bootstrap_form_tag url: '/index', layout: :horizontal do |f| %>
     <div class="jumbotron">
-      <!-- commented -->
-      <% if false %>
-          <%= f.check_box :exact_name, label: 'Match name exactly' %>
-          <%= f.check_box :exact_title, label: 'Match title exactly' %>
-      <% end %>
+      <div class="employee-search-form">
+        <!-- commented -->
+        <% if false %>
+            <%= f.check_box :exact_name, label: 'Match name exactly' %>
+            <%= f.check_box :exact_title, label: 'Match title exactly' %>
+        <% end %>
 
-      <%= f.text_field :name, hide_label: true, placeholder: 'Name (Required)', required: true %>
-      <%= f.text_field :title, hide_label: true, placeholder: 'Title (Optional)' %>
-      <!-- selected: "University of Georgia" -->
-      <%= f.select :organization, options_from_collection_for_select(@organizations, :name, :name), hide_label: true %>
-      <%#= f.select :year, options_from_collection_for_select(@years, :year, :year), hide_label: true, disabled: true %>
-      <%= f.select :sort, options_for_select(@sorts.collect { |s| [s, s] }), hide_label: true %>
+        <%= f.text_field :name, placeholder: 'John Doe', required: true %>
+        <%= f.text_field :title, placeholder: 'Optional' %>
+        <!-- selected: "University of Georgia" -->
+        <%= f.select :organization, options_from_collection_for_select(@organizations, :name, :name) %>
+        <%#= f.select :year, options_from_collection_for_select(@years, :year, :year), 
+        hide_label: true, disabled: true %>
+        <!-- <#%= f.label "Sort by" %> -->
+        <%= f.select :sort_by, options_for_select(@sorts.collect { |s| [s, s] }) %>
+      </div>
     </div>
 
     <div class="text-center">

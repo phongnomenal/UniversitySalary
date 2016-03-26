@@ -22,10 +22,17 @@
 
  /* body */
  body { 
-   padding-top: 30px; // avoid top nav bar covering content
-   padding-bottom: 30px; // avoid the bottom element from touching the bottom border
-   //background-color: #283540;
+  width: 70%;
+  margin: auto auto;
+  padding-top: 30px; // avoid top nav bar covering content
+  padding-bottom: 30px; // avoid the bottom element from touching the bottom border
+  //background-color: #283540;
  }
+
+.employee-search-form {
+  margin-left: 10%;
+  margin-right: 10%;
+}
 
 
  /* header */
