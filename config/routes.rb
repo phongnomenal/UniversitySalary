@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
-  # root 'employees#edit'
-  # root 'pages#home'
-
-  root 'employees#index'
-  # get '/index' => 'employees#index' # this is replaced by the root
-  post '/index' => 'employees#edit'
-
-  # get '/about' => 'pages#about'
-  # get '/contact' => 'pages#contact'
-
+  root 'pages#home'
+  post '/index' => 'employees#index'
   
 
   # The priority is based upon order of creation: first created -> highest priority.

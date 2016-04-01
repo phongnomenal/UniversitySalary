@@ -1,18 +1,25 @@
+ 
 // Place all the styles related to the Employees controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 div.page-header {
+	margin: auto auto;
 	border-bottom: none;
 }
 
+/*
 div.result-header {
 	padding-bottom: 20px;
 }
+*/
 
+/*
 div.index-header {
-	padding-bottom: 25px;
+	padding-bottom: 20px;
 }
+*/
 
 table th, td {
   font-size: 14px;

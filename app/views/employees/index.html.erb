@@ -1,34 +1,58 @@
 <body>
-<div class="text-center page-header index-header">
-  <!--<h2>Ever Wonder What Your Professors Make?</h2>-->
-  <h2>Ever wonder what your professors make?</h2>
-</div>
-
-<%= bootstrap_form_tag url: '/index', layout: :horizontal do |f| %>
-    <div class="jumbotron">
-      <div class="employee-search-form">
-        <!-- commented -->
-        <% if false %>
-            <%= f.check_box :exact_name, label: 'Match name exactly' %>
-            <%= f.check_box :exact_title, label: 'Match title exactly' %>
-        <% end %>
-
-        <%= f.text_field :name, placeholder: 'John Doe', required: true %>
-        <%= f.text_field :title, placeholder: 'Optional' %>
-        <!-- selected: "University of Georgia" -->
-        <%= f.select :organization, options_from_collection_for_select(@organizations, :name, :name) %>
-        <%#= f.select :year, options_from_collection_for_select(@years, :year, :year), 
-        hide_label: true, disabled: true %>
-        <!-- <#%= f.label "Sort by" %> -->
-        <%= f.select :sort_by, options_for_select(@sorts.collect { |s| [s, s] }) %>
-      </div>
+  <% if @result.size > 0 && @result != nil %>
+    <div class="text-center page-header result-header">
+      <h2>
+        <%= 
+          # @result.first.organization.titleize # Neat code but will capitalize "Of"
+          org = ""
+          @result.first.organization.split.each do |word|
+            word.upcase == "OF" ? word.downcase! : word.capitalize!
+            org += word + " "
+          end
+          "#{org}  #{@result.first.year}"
+        %>
+      </h2>
+      <br>
     </div>
+
+    <table class="table table-condensed table-hover table-striped sortable">
+      <thead>
+        <tr>
+          <th>#&nbsp;&nbsp;&nbsp;</th>
+          <th>Name</th>
+          <th>Title</th>
+          <!-- Spaces added for extra "sorting arrows" -->
+          <th class="col-md-2 text-right" style="">Salary $&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          <th class="col-md-2 text-right">Travel Fees $&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if @result.size > 0 && @result != nil %>
+          <% i = 0 %>
+          <% @result.each do |row| %>
+            <tr>
+              <td><%= i += 1 %></td>
+              <td><%= row_name = row.name.split(',').join(', ') %></td>
+              <td><%= row.title %></td>
+              <!-- display the salary with 2 decimal precision -->
+              <td class="text-right"><%= sprintf '%.2f', row.salary %></td>
+              <td class="text-right"><%= sprintf '%.2f', row.travel_fees %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table><br>
 
     <div class="text-center">
-      <!-- <button type="submit" class="btn btn-primary">Search Your Professor</button> -->
-      <!-- Same as above -->
-      <%= f.submit "Search Your Professor", class: "btn btn-primary" %>
+      <%= link_to "Search Again", root_url, class: "btn btn-success custom-button-size" %>
     </div>
-<% end %>
-</body>
 
+  <% else %>
+    <div class="text-center index-header">
+      <h2>Sorry We Could Not Parse Your Inputs</h2><br>
+      <%= link_to "Try Again", root_url, class: "btn btn-danger custom-button-size" %>
+    </div>
+  <% end %>        
+
+</body>

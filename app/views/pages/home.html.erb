@@ -1,3 +1,26 @@
-<h1>Welcome to UGA's Salary Database</h1>
+<body>
+<div class="text-center page-header index-header">
+  <h2>Ever Wonder What Your Professors Make?</h2><br>
+  <!-- <h2>Ever wonder what your professors make?</h2> -->
+</div>
 
+<%= bootstrap_form_tag url: '/index', layout: :horizontal do |f| %>
+    <div class="jumbotron">
+      <div class="employee-search-form">
+        <%= f.text_field :name, placeholder: 'John Doe', required: true %>
+        <%= f.text_field :title, placeholder: 'Optional' %>
+        <!-- selected: "University of Georgia" -->
+        <%= f.select :organization, options_from_collection_for_select(@organizations, :name, :name) %>
+        <!-- <%= f.select :sort_by, options_for_select(@sorts.collect { |s| [s, s] }) %> -->
+        <fieldset disabled>
+	        <%= f.select :year, options_from_collection_for_select(@years, :year, :year) %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <%= f.submit "Search Your Professor", class: "btn btn-primary custom-button-size" %>
+    </div>
+<% end %>
+</body>
 

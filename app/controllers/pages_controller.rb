@@ -1,10 +1,8 @@
 class PagesController < ApplicationController
 	def home
-	end
-
-	def about
-	end
-
-	def contact
+		@organizations = Organization.all.order('name asc')
+		@years = Year.all.order('year desc')
+		@sorts = ['Name Ascending', 'Name Descending', 
+							'Salary Ascending', 'Salary Descending']
 	end
 end
