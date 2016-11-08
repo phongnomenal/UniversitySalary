@@ -1,6 +1,6 @@
 == README
 
-`university-salary.herokuapp.com`
+<code>university-salary.herokuapp.com</code>
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
